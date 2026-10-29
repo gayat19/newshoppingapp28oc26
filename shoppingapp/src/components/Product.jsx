@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import data from '../DummyData/data'
 
 const Product = (props ) => {
@@ -7,7 +8,7 @@ const Product = (props ) => {
         console.log(`Buying product: ${product.title}`);
         props.onAddCart(product.id)
     };
-    console.log(`Product component loaded: ${product.title}`);
+
     return (
         <section className="card" style={{maxWidth: "320px"}}>
             <img src={product.thumbnail} className="card-img-top" alt="..."/>
