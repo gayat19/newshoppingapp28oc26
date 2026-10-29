@@ -1,8 +1,9 @@
 import data from '../DummyData/data'
 
-const Product = ( ) => {
-    const product = data.products[0];
-    console.log(product);
+const Product = (props ) => {
+    const product = props.product;
+
+    console.log("Product component loaded");
     return (
         <section className="card" style={{maxWidth: "320px"}}>
             <img src={product.thumbnail} className="card-img-top" alt="..."/>
