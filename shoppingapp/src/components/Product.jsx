@@ -1,16 +1,17 @@
 import { useEffect } from 'react';
 import data from '../DummyData/data'
+import { useNavigate } from 'react-router';
 
 const Product = (props ) => {
     const product = props.product;
-  
+    const navigate = useNavigate();
     const handleBuy = () => {
-        console.log(`Buying product: ${product.title}`);
-        props.onAddCart(product.id)
+
+        navigate(`/product-details/${product.id}`);
     };
 
     return (
-        <section className="card" style={{maxWidth: "320px"}}>
+        <section className={`card ${props.className ?? ''}`}>
             <img src={product.thumbnail} className="card-img-top" alt="..."/>
             <div className="card-body">
                 <h4 className="card-title">{product.title}</h4>

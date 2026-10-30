@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 import data from '../DummyData/data';
 import Product from './Product';
+import './Products.css';
 
 const Products = () => {
     const products = data.products;
@@ -22,15 +24,23 @@ const Products = () => {
             console.log(`Cleanup for cart: ${cartItems.join(', ')}`);
         };
     }, [cartItems]);
+    const navigate = useNavigate();
+    const handleGoToCart = () => {
+        alert("Go to cart clicked")
+        navigate('/cart');
+    };
     return (
         <section className="products">
-            <button type="button" className="btn-solid theme-primary" onClick={() => setCount(count + 1)}>Increase Count</button>
+            <button type="button" className="btn-solid theme-primary" onClick={handleGoToCart}>Go to Cart</button>
             <p>Count: {count}</p>
-            <h1>Cart - {productCount}</h1>
+            {productCount&&<p>Product Count: {productCount}</p>}
+            {/* <h1>  Cart Count - {productCount>0?productCount:'No products yet'}</h1> */}
             <p>Cart Items: {cartItems.join(', ')}</p>
-            {products.map((product) => (
-                <Product onAddCart={handleIncrease} className="product" key={product.id} product={product} />
-            ))}
+            <div className="product-grid">
+                {products.map((product) => (
+                    <Product onAddCart={handleIncrease} className="product" key={product.id} product={product} />
+                ))}
+            </div>
         </section>
     );
 };
