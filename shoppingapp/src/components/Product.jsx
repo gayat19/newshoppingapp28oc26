@@ -1,13 +1,15 @@
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import data from '../DummyData/data'
 import { useNavigate } from 'react-router';
 
 const Product = (props ) => {
     const product = props.product;
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const handleBuy = () => {
-
-        navigate(`/product-details/${product.id}`);
+        dispatch({ type: 'cart/addItem', payload: product });
+       
     };
 
     return (

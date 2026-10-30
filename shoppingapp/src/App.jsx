@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import Welcome from './components/Welcome'
+import Child from './components/Child'
 import ProductDetails from './components/Product-Details'
 import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
@@ -6,7 +8,7 @@ import viteLogo from './assets/vite.svg'
 import './App.css'
 
 import Menu from './components/Menu'
-import Products from './components/Products'
+import Shop from './components/Shop'
 import { Route, Routes } from 'react-router'
 import Greeting from './components/Greeting'
 import Cart from './components/Cart'
@@ -22,8 +24,11 @@ function App() {
       <Menu/>
       <hr/>
       <Routes>
-        <Route path="/" element={<Greeting/>} />
-        <Route path="/products" element={<Products/>} />
+        <Route path="/" element={<Greeting/>} >
+          <Route path="child" element={<Child/>} />
+          <Route path="welcome/:cname" element={<Welcome/>} />
+        </Route>
+        <Route path="/products" element={<Shop/>} />
         <Route path="/cart" element={<Cart/>} />
         <Route path="/product-details/:id" element={<ProductDetails/>} />
       </Routes>

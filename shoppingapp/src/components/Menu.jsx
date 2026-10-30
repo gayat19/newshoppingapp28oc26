@@ -10,10 +10,10 @@ const Menu =()=>{
                 <Link className="nav-link" to="/products">Products</Link>
             </li>
             <li className="nav-item">
-                <Link className="nav-link" to="/about">About</Link>
+                <Link className="nav-link" to="/welcome">About</Link>
             </li>
             <li className="nav-item">
-                <a className="nav-link" aria-disabled="true">Disabled</a>
+                <Link className="nav-link" to="/child">child</Link>
             </li>
         </ul>
     )
