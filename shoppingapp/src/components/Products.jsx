@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
+import clicks$ from '../ObservablesFiles/SubjectExample';
 import data from '../DummyData/data';
 import Product from './Product';
 import './Products.css';
@@ -19,9 +20,17 @@ const Products = () => {
 
     useEffect(() => {
         console.log(`Cart updated: ${cartItems.join(', ')}`);
+        
+        const subscription = clicks$.subscribe({
+            next(x) { console.log('got value ' + x); },
+            complete() { console.log('done'); }
+        });
+
+
 
         return () => {
             console.log(`Cleanup for cart: ${cartItems.join(', ')}`);
+            subscription.unsubscribe();
         };
     }, [cartItems]);
     const navigate = useNavigate();

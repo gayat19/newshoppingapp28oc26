@@ -1,9 +1,10 @@
 
 
 import { Outlet, useNavigate } from 'react-router'
+import clicks$ from '../ObservablesFiles/SubjectExample'
 import { useEffect } from 'react'
 import './Greeting.css'
-import source$ from '../ObservablesFiles/Operatorsample'
+
 
 
 // export default function Greeting() {    
@@ -52,7 +53,7 @@ const Greeting = () => {
   }
 
   useEffect(() => {
-    const subscription = source$.subscribe({
+    const subscription = clicks$.subscribe({
       next(x) { console.log('got value ' + x); },
       complete() { console.log('done'); }
     });
