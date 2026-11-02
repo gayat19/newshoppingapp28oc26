@@ -1,8 +1,9 @@
 
-
+import userAuth$ from '../ObservablesFiles/UserAuthBehaviourSubject'
 import { Outlet, useNavigate } from 'react-router'
-import clicks$ from '../ObservablesFiles/SubjectExample'
-import { useEffect } from 'react'
+import count$ from '../ObservablesFiles/BehaviourSubjectExample'
+
+import { useEffect, useState } from 'react'
 import './Greeting.css'
 
 
@@ -28,11 +29,11 @@ import './Greeting.css'
 const Greeting = () => {
   let message = "Welcome to my app!"
 
-  let customer = {
-    name: "John Doe",
+  let [customer, setCustomer] = useState({
+    name: undefined,
     email: "john.doe@example.com",
     age: 30
-  }
+  })
   const navigate = useNavigate()
   const handleNavigate = () => {
     //get a random number to toggle the navigation based on even or odd
@@ -53,18 +54,40 @@ const Greeting = () => {
   }
 
   useEffect(() => {
-    const subscription = clicks$.subscribe({
-      next(x) { console.log('got value ' + x); },
-      complete() { console.log('done'); }
+    
+    const userAuthSubscription = userAuth$.subscribe({
+      next(user) {
+        setCustomer(user);
+        console.log('User authenticated:', customer.name);
+      }
     });
-    return () => subscription.unsubscribe();
+    return () => {
+     
+      userAuthSubscription.unsubscribe();
+    };
   }, []);
+  const handleGoToLogin = () => {
+    navigate('/login')
+  }
+  const handleLogout = () => {
+    setCustomer(undefined);
+    userAuth$.next(undefined);
+  }
   return (
     <>
-      <h1 id="greet">{message}</h1>
-      <p>Name: {customer.name}</p>
+      {
+        customer?.name? <h1 id="greet">Welcome {customer.name}
+        <button className="btn btn-success" onClick={handleLogout}>Logout</button>  
+          </h1>
+        :
+        <h1 id="greet">
+          <button className="btn btn-success" onClick={handleGoToLogin}>Login</button>
+        </h1>
+      }
+      
+      {/* <p>Name: {customer.name}</p>
       <p>Email: {customer.email}</p>
-      <p>Age: {customer.age}</p>
+      <p>Age: {customer.age}</p> */}
       <button onClick={handleNavigate}>Go to Child</button>
       <button onClick={handleNavigate1}>Go to Child</button>
       <Outlet/>

@@ -1,12 +1,10 @@
 import { useState } from 'react'
+import ProtectedRoute from './components/ProtectedRoute'
+import Login from './components/Login'
 import Welcome from './components/Welcome'
 import Child from './components/Child'
 import ProductDetails from './components/Product-Details'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
 import './App.css'
-
 import Menu from './components/Menu'
 import Shop from './components/Shop'
 import { Route, Routes } from 'react-router'
@@ -28,7 +26,11 @@ function App() {
           <Route path="child" element={<Child/>} />
           <Route path="welcome/:cname" element={<Welcome/>} />
         </Route>
-        <Route path="/products" element={<Shop/>} />
+        <Route  element={<ProtectedRoute/>} >
+             <Route path="/products" element={<Shop/>} />
+        </Route>
+        <Route path="/login" element={<Login/>} />
+       
         <Route path="/cart" element={<Cart/>} />
         <Route path="/product-details/:id" element={<ProductDetails/>} />
       </Routes>
