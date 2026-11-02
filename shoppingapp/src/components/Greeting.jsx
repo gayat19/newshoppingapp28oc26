@@ -1,6 +1,8 @@
 
 
 import { Outlet, useNavigate } from 'react-router'
+import { useEffect } from 'react'
+import simpleObservable from '../ObservablesFiles/Simple'
 import './Greeting.css'
 
 // export default function Greeting() {    
@@ -47,6 +49,23 @@ const Greeting = () => {
       navigate('/welcome/James')
     
   }
+
+  useEffect(() => {
+    const subscription1 = simpleObservable.subscribe({
+      next(x) { console.log('got value ' + x); },
+      //error(err) { console.error('something wrong occurred: ' + err); },
+      complete() { console.log('done'); }
+    });
+    const subscription2 = simpleObservable.subscribe({
+      next(x) { console.log('got value ' + x); },
+      //error(err) { console.error('something wrong occurred: ' + err); },
+      complete() { console.log('done'); }
+    });
+    return () => {
+      subscription1.unsubscribe();
+      subscription2.unsubscribe();
+    };
+  }, []);
   return (
     <>
       <h1 id="greet">{message}</h1>
