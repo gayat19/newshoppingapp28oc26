@@ -29,11 +29,7 @@ import './Greeting.css'
 const Greeting = () => {
   let message = "Welcome to my app!"
 
-  let [customer, setCustomer] = useState({
-    name: undefined,
-    email: "john.doe@example.com",
-    age: 30
-  })
+  let [customer, setCustomer] = useState(userAuth$.getValue())
   const navigate = useNavigate()
   const handleNavigate = () => {
     //get a random number to toggle the navigation based on even or odd
@@ -58,7 +54,7 @@ const Greeting = () => {
     const userAuthSubscription = userAuth$.subscribe({
       next(user) {
         setCustomer(user);
-        console.log('User authenticated:', customer.name);
+        console.log('User authenticated:', user?.name);
       }
     });
     return () => {
@@ -70,7 +66,6 @@ const Greeting = () => {
     navigate('/login')
   }
   const handleLogout = () => {
-    setCustomer(undefined);
     userAuth$.next(undefined);
   }
   return (
