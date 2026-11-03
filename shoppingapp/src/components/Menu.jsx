@@ -15,6 +15,9 @@ const Menu =()=>{
             <li className="nav-item">
                 <Link className="nav-link" to="/child">child</Link>
             </li>
+            <li className="nav-item">
+                <Link className="nav-link" to="/posts">Posts</Link>
+            </li>
             {/* <li className="nav-item">
                 <Link className="nav-link" to="/rxjs/switchmap">switchMap</Link>
             </li>

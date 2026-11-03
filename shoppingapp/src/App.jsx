@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Posts from './components/Posts'
 import ProtectedRoute from './components/ProtectedRoute'
 import Login from './components/Login'
 import Welcome from './components/Welcome'
@@ -37,6 +38,7 @@ function App() {
        
         <Route path="/cart" element={<Cart/>} />
         <Route path="/product-details/:id" element={<ProductDetails/>} />
+        <Route path="/posts" element={<Posts/>} />
         {/* <Route path="/rxjs/switchmap" element={<SwitchMapDemo/>} />
         <Route path="/rxjs/mergemap" element={<MergeMapDemo/>} />
         <Route path="/rxjs/concatmap" element={<ConcatMapDemo/>} />
