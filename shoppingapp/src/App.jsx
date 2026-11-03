@@ -16,6 +16,7 @@ import MergeMapDemo from './components/RxjsDemos/MergeMapDemo'
 import ConcatMapDemo from './components/RxjsDemos/ConcatMapDemo'
 import ExhaustMapDemo from './components/RxjsDemos/ExhaustMapDemo'
 import PostWithComment from './components/PostWithComment'
+import PaginatedProductList from './components/PaginatedProductsList'
 
 
 function App() {
@@ -28,7 +29,8 @@ function App() {
       <Menu/>
       <hr/>
       <Routes>
-        <Route path="/" element={<Greeting/>} >
+        <Route path="/" element={<PaginatedProductList />} >
+
           <Route path="child" element={<Child/>} />
           <Route path="welcome/:cname" element={<Welcome/>} />
         </Route>

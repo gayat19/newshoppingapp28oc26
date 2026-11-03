@@ -9,6 +9,13 @@ export const login = (username, password) => {
   return ajax.post(url, body, { 'Content-Type': 'application/json' });
 }
 
+export const paginatedProducts = (page, limit) => {
+  const url = `${baseurl}/products?limit=${limit}&skip=${(page - 1) * limit}`;
+  return axios.get(url);
+}
+
+
+
 export const getPosts = () => {
   const url = `${baseUrlNew}/posts`;
   return axios.get(url);
