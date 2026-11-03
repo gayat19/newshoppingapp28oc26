@@ -15,6 +15,18 @@ const Menu =()=>{
             <li className="nav-item">
                 <Link className="nav-link" to="/child">child</Link>
             </li>
+            {/* <li className="nav-item">
+                <Link className="nav-link" to="/rxjs/switchmap">switchMap</Link>
+            </li>
+            <li className="nav-item">
+                <Link className="nav-link" to="/rxjs/mergemap">mergeMap</Link>
+            </li>
+            <li className="nav-item">
+                <Link className="nav-link" to="/rxjs/concatmap">concatMap</Link>
+            </li>
+            <li className="nav-item">
+                <Link className="nav-link" to="/rxjs/exhaustmap">exhaustMap</Link>
+            </li> */}
         </ul>
     )
 }

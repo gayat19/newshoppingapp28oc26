@@ -10,6 +10,10 @@ import Shop from './components/Shop'
 import { Route, Routes } from 'react-router'
 import Greeting from './components/Greeting'
 import Cart from './components/Cart'
+import SwitchMapDemo from './components/RxjsDemos/SwitchMapDemo'
+import MergeMapDemo from './components/RxjsDemos/MergeMapDemo'
+import ConcatMapDemo from './components/RxjsDemos/ConcatMapDemo'
+import ExhaustMapDemo from './components/RxjsDemos/ExhaustMapDemo'
 
 
 function App() {
@@ -33,7 +37,11 @@ function App() {
        
         <Route path="/cart" element={<Cart/>} />
         <Route path="/product-details/:id" element={<ProductDetails/>} />
-      </Routes>
+        {/* <Route path="/rxjs/switchmap" element={<SwitchMapDemo/>} />
+        <Route path="/rxjs/mergemap" element={<MergeMapDemo/>} />
+        <Route path="/rxjs/concatmap" element={<ConcatMapDemo/>} />
+        <Route path="/rxjs/exhaustmap" element={<ExhaustMapDemo/>} />*/}
+      </Routes> 
     
     </>
   )
