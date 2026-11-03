@@ -15,3 +15,23 @@ export const getPosts = () => {
 }
 
 
+export const getPostWithComments = async () => {
+
+  
+    const response = await axios.get(`${baseUrlNew}/posts`);
+    const posts = response.data;
+   
+    const commentsPost = [];
+    for (const post of posts) {
+         console.log(post);
+      const comments = await getCommentsForPost(post.id);
+      commentsPost.push({ post, comments });
+    }
+
+    return commentsPost;
+}
+
+const getCommentsForPost = async (postId) => {
+  return await axios.get(`${baseUrlNew}/posts/${postId}/comments`).then(response => response.data);
+}
+

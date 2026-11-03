@@ -15,6 +15,7 @@ import SwitchMapDemo from './components/RxjsDemos/SwitchMapDemo'
 import MergeMapDemo from './components/RxjsDemos/MergeMapDemo'
 import ConcatMapDemo from './components/RxjsDemos/ConcatMapDemo'
 import ExhaustMapDemo from './components/RxjsDemos/ExhaustMapDemo'
+import PostWithComment from './components/PostWithComment'
 
 
 function App() {
@@ -38,7 +39,7 @@ function App() {
        
         <Route path="/cart" element={<Cart/>} />
         <Route path="/product-details/:id" element={<ProductDetails/>} />
-        <Route path="/posts" element={<Posts/>} />
+        <Route path="/posts" element={<PostWithComment/>} />
         {/* <Route path="/rxjs/switchmap" element={<SwitchMapDemo/>} />
         <Route path="/rxjs/mergemap" element={<MergeMapDemo/>} />
         <Route path="/rxjs/concatmap" element={<ConcatMapDemo/>} />
