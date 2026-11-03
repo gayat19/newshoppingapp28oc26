@@ -5,18 +5,28 @@ import Product from "./Product";
 const PaginatedProductList = ()=>{
    
     const [products, setProducts] = useState([]);
-    const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
     const observer = useRef();
+    const pageRef = useRef(1);          
+    const isFetching = useRef(false);   
 
     const loadMore = async () => {
+        if (isFetching.current) return;
+        isFetching.current = true;
         setLoading(true);
-        const response = await paginatedProducts(page, 10);
-        // dummyjson returns { products: [...], total, skip, limit }
-    
-        setProducts(prev => [...prev,...response.data.products]);
-        setPage(prev => prev + 1);
-        setLoading(false);
+        try {
+            const response = await paginatedProducts(pageRef.current, 10);
+            // dummyjson returns { products: [...], total, skip, limit }
+            pageRef.current += 1;
+            setProducts(prev => {
+                
+                const seen = new Set(prev.map(p => p.id));
+                return [...prev, ...response.data.products.filter(p => !seen.has(p.id))];
+            });
+        } finally {
+            isFetching.current = false;
+            setLoading(false);
+        }
     };
 
     useEffect(() => {
