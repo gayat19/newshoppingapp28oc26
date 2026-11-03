@@ -14,7 +14,10 @@ export const paginatedProducts = (page, limit) => {
   return axios.get(url);
 }
 
-
+export const searchProduct = (query) => {
+  const url = `${baseurl}/products/search?q=${query}`;
+  return axios.get(url);
+}
 
 export const getPosts = () => {
   const url = `${baseUrlNew}/posts`;

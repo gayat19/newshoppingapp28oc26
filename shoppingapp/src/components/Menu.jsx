@@ -18,7 +18,7 @@ const Menu =()=>{
             <li className="nav-item">
                 <Link className="nav-link" to="/posts">Posts</Link>
             </li>
-            {/* <li className="nav-item">
+           <li className="nav-item">
                 <Link className="nav-link" to="/rxjs/switchmap">switchMap</Link>
             </li>
             <li className="nav-item">
@@ -29,7 +29,7 @@ const Menu =()=>{
             </li>
             <li className="nav-item">
                 <Link className="nav-link" to="/rxjs/exhaustmap">exhaustMap</Link>
-            </li> */}
+            </li> 
         </ul>
     )
 }

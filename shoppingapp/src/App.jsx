@@ -17,6 +17,7 @@ import ConcatMapDemo from './components/RxjsDemos/ConcatMapDemo'
 import ExhaustMapDemo from './components/RxjsDemos/ExhaustMapDemo'
 import PostWithComment from './components/PostWithComment'
 import PaginatedProductList from './components/PaginatedProductsList'
+import SearchWithDebounce from './components/SearchWithDebounce'
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
       <Menu/>
       <hr/>
       <Routes>
-        <Route path="/" element={<PaginatedProductList />} >
+        <Route path="/" element={<SearchWithDebounce/>} >
 
           <Route path="child" element={<Child/>} />
           <Route path="welcome/:cname" element={<Welcome/>} />
@@ -42,10 +43,10 @@ function App() {
         <Route path="/cart" element={<Cart/>} />
         <Route path="/product-details/:id" element={<ProductDetails/>} />
         <Route path="/posts" element={<PostWithComment/>} />
-        {/* <Route path="/rxjs/switchmap" element={<SwitchMapDemo/>} />
+       <Route path="/rxjs/switchmap" element={<SwitchMapDemo/>} />
         <Route path="/rxjs/mergemap" element={<MergeMapDemo/>} />
         <Route path="/rxjs/concatmap" element={<ConcatMapDemo/>} />
-        <Route path="/rxjs/exhaustmap" element={<ExhaustMapDemo/>} />*/}
+        <Route path="/rxjs/exhaustmap" element={<ExhaustMapDemo/>} />
       </Routes> 
     
     </>
