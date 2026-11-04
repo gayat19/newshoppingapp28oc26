@@ -1,13 +1,13 @@
+import ZodForm from "./ZodForm";
 
 
 
-import RhfForm from "./RhfForm";
 
 const Display = () => {
     return (
         <>
-
-           <RhfForm />
+        <ZodForm/>
+          
         </>
     );
 };
