@@ -1,6 +1,6 @@
 
 
-import { useState } from "react";
+import { useState, useEffect,memo } from "react";
 
 
 
@@ -11,7 +11,7 @@ import { useState } from "react";
         if(!/^[a-zA-Z]+$/.test(v)) return "Text must contain only letters";
         return "";
     };
-const SingleInputValidation = () => {
+const SingleInputValidation = memo(() => {
     const [value, setValue] = useState("");
     const [touched, setTouched] = useState(false);
     const error = validateText(value);
@@ -20,7 +20,9 @@ const SingleInputValidation = () => {
         setValue(e.target.value);
     };
 
-
+    useEffect(() => {
+        console.log("Single input form loaded");
+    });
 
     return (
         <>
@@ -35,6 +37,6 @@ const SingleInputValidation = () => {
          {touched && !error && <div style={{ color: "green" }}>Looks good!</div>}
         </>);
        
-};
+});
 
 export default SingleInputValidation;
