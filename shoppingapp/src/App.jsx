@@ -19,6 +19,7 @@ import PostWithComment from './components/PostWithComment'
 import PaginatedProductList from './components/PaginatedProductsList'
 import SearchWithDebounce from './components/SearchWithDebounce'
 import Display from './components/Validations/Display'
+import { ExplainingCustomHook } from './components/ExplainingCustomHook'
 
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
       <Menu/>
       <hr/>
       <Routes>
-        <Route path="/" element={<Display />} >
+        <Route path="/" element={<ExplainingCustomHook/>} >
 
           <Route path="child" element={<Child/>} />
           <Route path="welcome/:cname" element={<Welcome/>} />
