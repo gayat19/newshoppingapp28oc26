@@ -1,9 +1,11 @@
-import SingleInputValidation from "./SingleInputValidation";
+
+
+import FormValidationsManual from "./FormValidationsManual";
 
 const Display = () => {
     return (
         <>
-           <SingleInputValidation/>
+           <FormValidationsManual />
         </>
     );
 };
