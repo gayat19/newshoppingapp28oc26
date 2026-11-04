@@ -18,6 +18,7 @@ import ExhaustMapDemo from './components/RxjsDemos/ExhaustMapDemo'
 import PostWithComment from './components/PostWithComment'
 import PaginatedProductList from './components/PaginatedProductsList'
 import SearchWithDebounce from './components/SearchWithDebounce'
+import Display from './components/Validations/Display'
 
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
       <Menu/>
       <hr/>
       <Routes>
-        <Route path="/" element={<SearchWithDebounce/>} >
+        <Route path="/" element={<Display />} >
 
           <Route path="child" element={<Child/>} />
           <Route path="welcome/:cname" element={<Welcome/>} />
