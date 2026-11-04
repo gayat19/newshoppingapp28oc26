@@ -1,11 +1,13 @@
 
 
-import FormValidationsManual from "./FormValidationsManual";
+
+import RhfForm from "./RhfForm";
 
 const Display = () => {
     return (
         <>
-           <FormValidationsManual />
+
+           <RhfForm />
         </>
     );
 };
