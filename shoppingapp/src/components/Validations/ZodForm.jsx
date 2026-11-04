@@ -51,9 +51,7 @@ const ZodForm = () => {
         setSubmitted(toSave);
     };
 
-    if (submitted) {
-        return <Submitted />;
-    }
+
 
     return (
         <>
@@ -75,7 +73,8 @@ const ZodForm = () => {
 
         </form>
         
-           <Submitted /></>
+           {submitted && <Submitted data={submitted} />}
+    </>
 
     );
 };
