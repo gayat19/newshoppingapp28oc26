@@ -2,14 +2,25 @@
 
 import { useState } from "react";
 
+
+
+    const validateText = (value) => {
+        const v = value.trim();
+        if(v==="") return "This field is required";
+        if(v.length < 3) return "Text must be at least 3 characters long";
+        if(!/^[a-zA-Z]+$/.test(v)) return "Text must contain only letters";
+        return "";
+    };
 const SingleInputValidation = () => {
     const [value, setValue] = useState("");
-    const [error, setError] = useState("");
-    
+    const [touched, setTouched] = useState(false);
+    const error = validateText(value);
+
     const handleChange = (e) => {
         setValue(e.target.value);
-      
     };
+
+
 
     return (
         <>
@@ -17,16 +28,11 @@ const SingleInputValidation = () => {
             type="text"
             value={value}
             onChange={handleChange}
-            onBlur={() => {
-                        if (!value) {
-                            setError("This field is required");
-                        } else {
-                            setError("");
-                        }
-                    }}
+            onBlur={() => setTouched(true)}
             placeholder="Enter text"
         />
-        {error && <div style={{ color: "red" }}>{error}</div>}
+        {touched && error && <div style={{ color: "red" }}>{error}</div>}
+         {touched && !error && <div style={{ color: "green" }}>Looks good!</div>}
         </>);
        
 };
