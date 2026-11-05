@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import UserProfile from './components/UserProfile'
 import Posts from './components/Posts'
 import ProtectedRoute from './components/ProtectedRoute'
 import Login from './components/Login'
@@ -39,6 +40,7 @@ function App() {
         </Route>
         <Route  element={<ProtectedRoute/>} >
              <Route path="/products" element={<Shop/>} />
+             <Route path="/user-profile" element={<UserProfile/>} />
         </Route>
         <Route path="/login" element={<Login/>} />
        

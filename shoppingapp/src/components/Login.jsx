@@ -16,7 +16,8 @@ export default function Login() {
      
     login(loginData.email, loginData.password).subscribe({
       next: (response) => {
-        console.log('Login successful:', response);
+        console.log('Login successful:', response.response);
+        sessionStorage.setItem('accessToken', response.response.accessToken);
         userAuth$.next(response.response);
         navigate(location.state?.from?.pathname || '/', { replace: true });
       },

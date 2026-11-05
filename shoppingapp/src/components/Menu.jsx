@@ -6,6 +6,9 @@ const Menu =()=>{
             <li className="nav-item">
                <Link className="nav-link" to="/">Home</Link>
             </li>
+             <li className="nav-item">
+               <Link className="nav-link" to="/user-profile">User Profile</Link>
+            </li>
             <li className="nav-item">
                 <Link className="nav-link" to="/products">Products</Link>
             </li>

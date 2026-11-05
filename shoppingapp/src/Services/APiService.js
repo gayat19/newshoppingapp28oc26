@@ -1,6 +1,6 @@
 import { ajax } from "rxjs/ajax";
 import { baseurl, baseUrlNew } from "../misc/misc_const";
-import axios from "axios";
+import axios from '../misc/interceptor';
 
 export const login = (username, password) => {
   const body = { username, password };
@@ -8,6 +8,12 @@ export const login = (username, password) => {
 
   return ajax.post(url, body, { 'Content-Type': 'application/json' });
 }
+
+export const getProfile = () => {
+
+  const url = `${baseurl}/auth/me`;
+  return axios.get(url);
+} 
 
 export const paginatedProducts = (page, limit) => {
   const url = `${baseurl}/products?limit=${limit}&skip=${(page - 1) * limit}`;
