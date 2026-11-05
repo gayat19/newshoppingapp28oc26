@@ -1,18 +1,17 @@
 import { Navigate, Outlet, useLocation } from "react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import userAuth$ from "../ObservablesFiles/UserAuthBehaviourSubject";
+import { useAuth } from "../hooks/useAuth";
 
 export default function ProtectedRoute() {
 
-  const [user, setUser] = useState(userAuth$.getValue());
+  
   const location = useLocation();
+  const accessToken = sessionStorage.getItem('accessToken');
 
-  useEffect(() => {
-    const subscription = userAuth$.subscribe(setUser);
-    return () => subscription.unsubscribe();
-  }, []);
 
-  if (!user) {
+
+  if (!accessToken) {
     return <Navigate to="/login" replace state={{ from: location }} />;
   }
   return <Outlet />;

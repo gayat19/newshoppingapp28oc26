@@ -1,6 +1,14 @@
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
+import { useAuth } from "../hooks/useAuth";
 
 const Menu =()=>{
+
+    const {logout} = useAuth();
+    const navigation = useNavigate();
+    const handleLogout = () => {
+        logout();
+        navigation("/login");
+    };
     return (
         <ul className="nav justify-content-center">
             <li className="nav-item">
@@ -32,6 +40,9 @@ const Menu =()=>{
             </li>
             <li className="nav-item">
                 <Link className="nav-link" to="/rxjs/exhaustmap">exhaustMap</Link>
+            </li> 
+            <li className="nav-item">
+                <button className="nav-link" onClick={handleLogout}>Logout</button>
             </li> 
         </ul>
     )

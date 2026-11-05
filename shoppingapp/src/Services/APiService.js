@@ -2,10 +2,11 @@ import { ajax } from "rxjs/ajax";
 import { baseurl, baseUrlNew } from "../misc/misc_const";
 import axios from '../misc/interceptor';
 
-export const login = (username, password) => {
-  const body = { username, password };
-  const url = `${baseurl}/auth/login`;
+export const apiLogin = ({ username, password }) => {
 
+  const url = `${baseurl}/auth/login`;
+  const body = { username, password };
+  console.log(body)
   return ajax.post(url, body, { 'Content-Type': 'application/json' });
 }
 

@@ -1,31 +1,22 @@
 import { useNavigate, useLocation } from 'react-router'
-import userAuth$ from '../ObservablesFiles/UserAuthBehaviourSubject'
+import { useAuth } from '../hooks/useAuth'
 import { useState } from 'react'
-import { login } from '../Services/APiService'
+
+
 
 export default function Login() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [loginData, setLoginData] = useState({ email: 'john.doe@example.com', password: '' });
-
+  const [loginData, setLoginData] = useState({ username: 'emilys', password: '' });
+  const { login,user } = useAuth();
 
   const handleLogin = (e) => {
       e.preventDefault();
     // console.log('Login button clicked');
     // userAuth$.next({ name: 'John Doe', email: 'john.doe@example.com', age: 30 });
-     
-    login(loginData.email, loginData.password).subscribe({
-      next: (response) => {
-        console.log('Login successful:', response.response);
-        sessionStorage.setItem('accessToken', response.response.accessToken);
-        userAuth$.next(response.response);
-        navigate(location.state?.from?.pathname || '/', { replace: true });
-      },
-      error: (error) => {
-        console.error('Login failed:', error);
-        alert('Login failed. Please check your credentials and try again.');
-      }
-    });
+    login(loginData);
+    alert('Welcome '+user?.firstname)
+    navigate(location.state?.from?.pathname || '/', { replace: true });
   
   }
 
@@ -36,12 +27,12 @@ export default function Login() {
   return (
     <div>
       <h1>Login Page</h1>
-      button to login will go here
+
       <form>
         <div className="mb-3">
-          <label htmlFor="email" className="form-label">Email address</label>
-          <input type="email" className="form-control" id="email" 
-          value={loginData.email}
+          <label htmlFor="username" className="form-label">Username</label>
+          <input type="text" className="form-control" id="username" 
+          value={loginData.username}
            onChange={handleUpdateLoginObject} />
         </div>
         <div className="mb-3">
